@@ -1464,15 +1464,13 @@ public:
 		static const uint16_t __address = 45;
 		
 		/* Bits LEN_WID: */
-		/*
-		 * The number of bytes used for the length field:
-		 * - 0: 1 byte
-		 * - 1: 2 bytes.
-		 */
+		/* The number of bytes used for the length field  */
 		struct LEN_WID
 		{
 			static const uint8_t dflt = 0b0; // 1'b0
 			static const uint8_t mask = 0b10000000; // [7]
+			static const uint8_t NUM_1_BYTE = 0b0; // 1 byte
+			static const uint8_t NUM_2_BYTES = 0b1; // 2 bytes
 		};
 		/* Bits reserved_0: */
 		struct reserved_0
@@ -1486,6 +1484,7 @@ public:
 		{
 			static const uint8_t dflt = 0b0; // 1'b0
 			static const uint8_t mask = 0b00001000; // [3]
+			static const uint8_t INCLUDE_ADDRESS_FIELD = 0b1; // 
 		};
 		/* Bits reserved_1: */
 		struct reserved_1
@@ -1521,30 +1520,25 @@ public:
 		static const uint16_t __address = 46;
 		
 		/* Bits PCKT_FRMT: */
-		/*
-		 * Format of packet:
-		 * - 0: Basic
-		 * - 1: 802.15.4g
-		 * - 2: UART OTA
-		 * - 3: Stack
-		 * (see section 6 )
-		 */
+		/* Format of packet (see section 6)  */
 		struct PCKT_FRMT
 		{
 			static const uint8_t dflt = 0b00; // 2'b0
 			static const uint8_t mask = 0b11000000; // [6,7]
+			static const uint8_t BASIC = 0; // 0: Basic
+			static const uint8_t FMT_802_15_4g = 1; // 1: 802.15.4g
+			static const uint8_t OTA = 2; // 2: UART OTA
+			static const uint8_t STACK = 3; // 3: Stack
 		};
 		/* Bits RX_MODE: */
-		/*
-		 * RX mode:
-		 * - 0: normal mode
-		 * - 1: direct through FIFO
-		 * - 2: direct through GPIO
-		 */
+		/* RX mode  */
 		struct RX_MODE
 		{
 			static const uint8_t dflt = 0b10; // 2'b10
 			static const uint8_t mask = 0b00110000; // [4,5]
+			static const uint8_t NORMAL = 0; // 0: normal mode
+			static const uint8_t DIRECT_FIFO = 1; // 1: direct through FIFO
+			static const uint8_t DIRECT_GPIO = 2; // 2: direct through GPIO §
 		};
 		/* Bits FSK4_SYM_SWAP: */
 		/* Select the symbol mapping for 4(G)FSK.  */
